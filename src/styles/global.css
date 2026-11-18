@@ -292,7 +292,45 @@ code { background: var(--sand); color: var(--ink); padding: 2px 6px; border-radi
 .rank { width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 11px; display: grid; place-items: center; flex: none; }
 .order-list { display: grid; gap: 16px; }
 .order-card { border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; background: #fff; } .order-card header, .order-card footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; } .order-card header > div { display: flex; flex-direction: column; } .order-card header small { color: var(--muted); }
-.order-items { display: flex; gap: 10px; align-items: center; margin: 14px 0; } .order-items img { width: 54px; height: 68px; object-fit: cover; border-radius: 6px; background: var(--sand); }
+.order-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.order-item-return {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+}
+
+.order-item-return img {
+  width: 65px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.return-product-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #ff5252;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  margin-left: auto;
+}
+
+.return-product-btn:hover {
+  background: #f90e0e;
+  color: #fff;
+}
 .tracker { list-style: none; padding: 0; margin: 0; } .tracker li { display: flex; gap: 14px; position: relative; padding-bottom: 22px; } .tracker li:last-child { padding-bottom: 0; }
 .tracker li::before { content: ''; position: absolute; left: 14px; top: 30px; bottom: 0; width: 2px; background: var(--line); } .tracker li:last-child::before { display: none; } .tracker li.done::before { background: var(--ok); }
 .tracker .dot { width: 30px; height: 30px; border-radius: 50%; flex: none; display: grid; place-items: center; background: #fff; border: 2px solid var(--line); font-size: 12px; color: var(--muted); z-index: 1; } .tracker li.done .dot { background: var(--ok); border-color: var(--ok); color: #fff; }
@@ -355,3 +393,200 @@ code { background: var(--sand); color: var(--ink); padding: 2px 6px; border-radi
 .switch { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer; } .switch input { display: none; } .switch span { width: 38px; height: 22px; border-radius: 11px; background: #cfc9be; position: relative; transition: background .2s; } .switch span::after { content: ''; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; background: #fff; border-radius: 50%; transition: transform .2s; } .switch input:checked + span { background: var(--ok); } .switch input:checked + span::after { transform: translateX(16px); }
 .coupon-code { font-family: ui-monospace, monospace; background: var(--sand); padding: 3px 8px; border-radius: 4px; letter-spacing: .05em; }
 .toast-body { font-family: var(--font-body); }
+/* Modal */
+
+.return-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.return-modal {
+  width: 100%;
+  max-width: 480px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.return-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.return-modal-header h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.return-modal-header button {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.return-product-details {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.return-product-details img {
+  width: 75px;
+  height: 85px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.return-product-details h4 {
+  margin: 0 0 8px;
+}
+
+.return-product-details p {
+  margin: 4px 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.return-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.return-form-group label span {
+  color: red;
+}
+
+.return-form-group textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 100px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  font-family: inherit;
+  outline: none;
+}
+
+.return-form-group textarea:focus {
+  border-color: #333;
+}
+
+.return-form-group small {
+  display: block;
+  color: #888;
+  margin-top: 5px;
+}
+
+.return-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.return-modal-actions button {
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.return-cancel-btn {
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+.return-confirm-btn {
+  background: #222;
+  color: #fff;
+  border: none;
+}
+
+.return-confirm-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .return-modal {
+    padding: 18px;
+  }
+
+  .return-modal-actions button {
+    padding: 9px 11px;
+    font-size: 12px;
+  }
+}
+
+
+.return-quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+.return-quantity-selector button {
+  width: 35px;
+  height: 35px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.return-quantity-selector button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.return-quantity-selector span {
+  min-width: 25px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.return-amount-box {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 15px;
+  margin: 15px 0;
+  background: #f7f7f7;
+  border-radius: 8px;
+}
+
+.return-amount-box span {
+  font-size: 13px;
+  color: #666;
+}
+
+.return-amount-box h3 {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.return-amount-box small {
+  color: #777;
+  font-size: 12px;
+}

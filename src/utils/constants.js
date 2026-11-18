@@ -1,9 +1,9 @@
 export const BRAND = 'BRO FUSION';
 export const CURRENCY = '₹';
-export const FREE_SHIPPING_THRESHOLD = 1999;
-export const STANDARD_SHIPPING = 99;
-export const EXPRESS_SHIPPING = 199;
-export const TAX_RATE = 0.05;
+export const FREE_SHIPPING_THRESHOLD = 0;
+export const STANDARD_SHIPPING = 0;
+export const EXPRESS_SHIPPING = 0;
+export const TAX_RATE = 0;
 export const PAGE_SIZE = 8;
 
 export const STORAGE_KEYS = {

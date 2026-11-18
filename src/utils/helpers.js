@@ -79,8 +79,8 @@ export const couponDiscount = (coupon, subtotal) => {
 export const computeTotals = ({ items, coupon, shippingCharge, freeShippingThreshold, taxRate }) => {
   const subtotal = items.reduce((s, i) => s + i.price * i.qty, 0);
   const discount = couponDiscount(coupon, subtotal);
-  // const shipping = items.length === 0 || subtotal - discount >= freeShippingThreshold ? 0 : shippingCharge;
-  // const tax = Math.round((subtotal - discount) * taxRate);
+  const shipping = items.length === 0 || subtotal - discount >= freeShippingThreshold ? 0 : shippingCharge;
+  const tax = Math.round((subtotal - discount) * taxRate);
   return { subtotal, discount, total: subtotal - discount };
 };
 
